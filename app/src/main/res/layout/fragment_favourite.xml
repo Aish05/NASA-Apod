@@ -35,5 +35,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_standard"
+            style="@style/Text.Headline.GothamMedium.Default"
+            android:breakStrategy="balanced"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:setVisible="@{!viewModel.showLoading &amp;&amp; viewModel.favList.isEmpty()}"
+            android:text="@string/no_favorites"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
