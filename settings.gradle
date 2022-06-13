@@ -1,0 +1,3 @@
+
+rootProject.name = "NASA APOD"
+include ':app'

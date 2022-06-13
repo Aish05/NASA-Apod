@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.aish.apod.R"/>
+
+        <variable
+            name="viewModel"
+            type="com.aish.apod.ui.home.HomeViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="0dp"
+    tools:context=".ui.home.HomeFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:setVisible="@{!viewModel.showLoading}"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:padding="@dimen/spacing_small">
+
+            <TextView
+                android:id="@+id/text_current_date"
+                style="@style/Text.Body.Bold.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.formattedDate}"
+                app:layout_constraintBottom_toBottomOf="@id/text_date_change_helper"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="06/12/2022" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_date_change"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_date_picker"
+                app:layout_constraintBottom_toBottomOf="@id/text_date_change_helper"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@id/text_current_date"
+                app:layout_constraintTop_toTopOf="@id/text_current_date"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/text_date_change_helper"
+                style="@style/Text.Body.Book.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_standard_one_eighth"
+                android:breakStrategy="balanced"
+                android:text="@string/change_the_date_and_discover_the_cosmos"
+                app:layout_constraintEnd_toStartOf="@id/iv_date_change"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_current_date" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_pic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:setVisible="@{!viewModel.isVideoResource}"
+                app:image="@{viewModel.pictureData.url}"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/spacing_standard"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_date_change_helper" />
+
+            <ImageView
+                android:id="@+id/img_video_thumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:setVisible="@{viewModel.isVideoResource}"
+                android:layout_marginTop="@dimen/spacing_standard"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:src="@drawable/ic_player_play_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_date_change_helper" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="img_video_thumbnail, iv_pic" />
+
+            <TextView
+                android:id="@+id/text_title"
+                style="@style/Text.Headline.GothamMedium.XXLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_standard"
+                android:lineSpacingMultiplier="1.2"
+                android:text="@{viewModel.pictureData.title}"
+                app:layout_constraintBottom_toTopOf="@id/text_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/barrier_img"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="Picture Title" />
+
+            <TextView
+                android:id="@+id/text_description"
+                style="@style/Text.Body.Book.Default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/spacing_standard"
+                android:breakStrategy="high_quality"
+                android:lineSpacingMultiplier="1.2"
+                android:text="@{viewModel.pictureData.explanation}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_title"
+                app:layout_constraintBottom_toTopOf="@id/text_copyright"
+                tools:text="Picture Title" />
+
+            <TextView
+                android:id="@+id/text_copyright"
+                style="@style/Text.Headline.Italic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/copyright"
+                android:layout_marginBottom="@dimen/spacing_small"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_description"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/text_copyright_value"
+                style="@style/Text.Headline.Italic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing_standard_one_eighth"
+                android:text="@{viewModel.pictureData.copyright}"
+                app:layout_constraintTop_toTopOf="@id/text_copyright"
+                app:layout_constraintBottom_toBottomOf="@id/text_copyright"
+                app:layout_constraintStart_toEndOf="@id/text_copyright"
+                tools:text="abc" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_standard"
+        app:backgroundTint="@color/black"
+        app:tint="@color/yellow"
+        android:src="@{viewModel.isFavorite() ? R.drawable.ic_favorite : R.drawable.ic_not_favorite}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:throttledOnClick="@{() -> viewModel.onFavClicked()}" />
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:setVisible="@{viewModel.showLoading}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

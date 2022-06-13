@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- These styles should ONLY be used in the styles.xml and not directly in the app   -->
+
+    <style name="Text" />
+
+    <!--    Headlines    -->
+
+    <style name="Text.Headline" />
+
+    <style name="Text.Headline.GothamMedium">
+        <item name="android:fontFamily">@font/gothamnarrow_medium</item>
+    </style>
+
+    <style name="Text.Headline.GothamMedium.Default">
+        <item name="android:textSize">@dimen/text_size_default</item>
+    </style>
+
+    <style name="Text.Headline.GothamMedium.Small">
+        <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+
+    <style name="Text.Headline.GothamMedium.XXXLarge">
+        <item name="android:textSize">@dimen/text_size_xxx_medium_large</item>
+    </style>
+
+    <style name="Text.Headline.GothamMedium.XXLarge">
+        <item name="android:textSize">@dimen/text_size_xx_medium_large</item>
+    </style>
+
+    <!-- Headline Book -->
+    <style name="Text.Headline.Book">
+        <item name="android:fontFamily">@font/gothamnarrow_book</item>
+    </style>
+
+    <style name="Text.Headline.Book.Default">
+        <item name="android:textSize">@dimen/text_size_default</item>
+    </style>
+
+    <!--    Body    -->
+    <style name="Text.Body" />
+
+    <style name="Text.Body.Book">
+        <item name="android:fontFamily">@font/gothamnarrow_book</item>
+    </style>
+
+    <style name="Text.Body.Book.Medium">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+    </style>
+
+    <style name="Text.Body.Book.Default">
+        <item name="android:textSize">@dimen/text_size_default</item>
+    </style>
+
+    <style name="Text.Body.Book.Small">
+        <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+
+    <style name="Text.Body.Bold">
+        <item name="android:fontFamily">@font/gothamnarrow_bold</item>
+    </style>
+
+    <style name="Text.Body.Bold.Large">
+        <item name="android:textSize">@dimen/text_size_xxlarge</item>
+    </style>
+
+    <style name="Text.Body.Bold.Default">
+        <item name="android:textSize">@dimen/text_size_default</item>
+    </style>
+
+    <style name="Text.Headline.Italic">
+        <item name="android:fontFamily">@font/gothamnarrow_book_italic</item>
+        <item name="android:textSize">@dimen/text_size_default</item>
+    </style>
+
+    <style name="Text.Headline.Italic.XLarge">
+        <item name="android:textSize">@dimen/text_size_xxxlarge</item>
+    </style>
+</resources>

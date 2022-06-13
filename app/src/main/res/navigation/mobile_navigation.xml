@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <action
+        android:id="@+id/action_to_fav_details"
+        app:destination="@id/navigation_favourite_details" />
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.aish.apod.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_favourites"
+        android:name="com.aish.apod.ui.favorites.FavouritesFragment"
+        android:label="@string/title_favourites"
+        tools:layout="@layout/fragment_favourite" />
+
+    <fragment
+        android:id="@+id/navigation_favourite_details"
+        android:name="com.aish.apod.ui.favorites.FavouriteDetailFragment"
+        android:label="@string/title_favourite_details"
+        tools:layout="@layout/fragment_favourite">
+
+        <argument
+            android:name="favDetails"
+            app:argType="com.aish.apod.model.PictureData"
+            app:nullable="true" />
+
+    </fragment>
+
+</navigation>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">NASA APOD</string>
+    <string name="title_home">Pic Of The Day</string>
+    <string name="title_favourites">Favourites</string>
+    <string name="title_favourite_details">Details</string>
+    <string name="copyright">Image Credit and Copyright:  </string>
+    <string name="change_the_date_and_discover_the_cosmos">Change Date to discover the cosmos</string>
+</resources>
